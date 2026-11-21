@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transport App – Start Page</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#e9ecef;color:#12202b;padding:0 0 60px}
+h1{text-align:center;font-size:22px;margin-bottom:6px}
+.sub{text-align:center;color:#5b6770;margin-bottom:36px;font-size:14px}
+.row{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:20px}
+.label{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.label i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.label span{font-weight:400;color:#5b6770;font-size:13px}
+.phone{width:390px;height:844px;border-radius:48px;background:#0b0f12;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.screen{width:100%;height:100%;border-radius:38px;overflow:hidden;position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.status{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 28px 6px;font-size:14px;font-weight:600;z-index:3;color:#fff}
+.notch{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:110px;height:28px;border-radius:20px;background:#000;z-index:4}
+svg{display:block}
+.ico{width:22px;height:22px}
+.tabbar{margin-top:auto;display:flex;justify-content:space-around;padding:10px 8px 22px;border-top:1px solid rgba(0,0,0,.08);font-size:11px;background:#fff}
+.tabbar div{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--n);opacity:.55}
+.tabbar div.on{opacity:1;font-weight:600;color:var(--b)}
+.top{background:var(--b);color:#fff;padding:62px 20px 90px;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.top h2{font-size:26px;line-height:1.15;font-weight:800;max-width:230px;position:relative;z-index:2}
+.top h2 mark{background:#b9efe3;color:var(--n);padding:0 8px;border-radius:8px}
+.blob{position:absolute;right:-40px;top:20px}
+.plan{margin:-70px 16px 0;background:#fff;border-radius:24px;padding:16px;box-shadow:0 12px 30px var(--sh);position:relative;z-index:2}
+.route{position:relative;padding-left:26px}
+.route:before{content:"";position:absolute;left:7px;top:14px;bottom:14px;border-left:2px dotted var(--dt)}
+.r{padding:12px 14px;border-radius:14px;background:var(--t1);margin-bottom:8px;font-size:15px;position:relative;color:var(--mu)}
+.r b{color:var(--n);font-weight:600}
+.dot{position:absolute;top:50%;transform:translateY(-50%);left:-26px;width:16px;height:16px;border-radius:50%}
+.two{display:flex;gap:8px}
+.field{flex:1;display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:var(--t1);font-size:14px;margin-bottom:10px}
+.field b{color:var(--n);font-weight:500}
+.btn{background:var(--b);color:#fff;text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:16px}
+.alert{margin:14px 16px 0;padding:12px 14px;border-radius:16px;background:var(--ab,var(--n));color:var(--af,#fff);display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-size:13px}
+.alert b{color:var(--ah,var(--y))}
+.alert svg .tri{fill:var(--ais,var(--n));stroke:var(--ais,var(--n))}
+.alert svg .ex{stroke:var(--ai,var(--y))}
+.alert svg .exf{fill:var(--ai,var(--y))}
+.alert i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ai,var(--y));display:grid;place-items:center}
+h3{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--mu);margin:18px 20px 10px;display:flex;justify-content:space-between}
+h3 a{color:var(--b);text-transform:none;letter-spacing:0;font-weight:600}
+.favs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0 16px}
+.fav{flex:1;background:#fff;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:500;box-shadow:0 2px 8px var(--sh)}
+.fav i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--t2)}
+.hist{margin:0 16px;background:#fff;border-radius:16px;overflow:hidden}
+.h{display:flex;align-items:center;gap:12px;padding:11px 14px;font-size:14px;border-bottom:1px solid var(--t1)}
+.h:last-child{border:0}
+.h small{display:block;color:var(--mu);font-size:12px}
+.h em{margin-left:auto;color:var(--b);font-style:normal;font-weight:600;font-size:13px}
+.hi{font-size:14px;font-weight:500;opacity:.85;margin-bottom:4px;position:relative;z-index:2}
+.sky{position:absolute;right:0;bottom:70px;-webkit-mask-image:linear-gradient(to bottom,#000 65%,transparent 100%);mask-image:linear-gradient(to bottom,#000 65%,transparent 100%)}
+.screen>*{flex-shrink:0}
+[data-info=time] .h:nth-child(2),[data-info=headline] .h:nth-child(2){display:none}
+.jig{position:sticky;top:0;z-index:50;background:#3b3f45;color:#fff;display:flex;align-items:center;gap:36px;padding:14px 24px;border-bottom:3px solid #6b7078;flex-wrap:wrap}
+.jig .t{color:#e3e5e8;font-size:15px;font-weight:600}.jig .t small{display:block;color:#a9aeb5;font-weight:400;font-size:12px;margin-top:2px}
+.jig .g{display:flex;flex-direction:column;gap:6px}.jig .g>span{font-size:14px;font-weight:500}
+.seg{display:flex;border:1.5px solid #c9cdd2;border-radius:8px;padding:2px;gap:2px}
+.seg button{font:inherit;font-size:14px;color:#c7ccd4;background:none;border:0;padding:6px 14px;border-radius:6px;cursor:pointer}
+.seg button.on{background:#e3e5e8;color:#23262a;font-weight:600}
+.jig .reset{margin-left:auto;font:inherit;font-size:14px;color:#c7ccd4;background:none;border:1px solid #6b7078;border-radius:6px;padding:8px 14px;cursor:pointer}
+.row{margin-top:40px}.delay-above .alert{position:relative;z-index:2}.delay-above .plan{margin-top:12px}.delay-inside .alert{margin:12px 0 0}.delay-inside h3{margin-top:12px}.delay-inside .h:nth-child(2){display:none}
+.alert .hl{display:none;font-size:12px;font-weight:400}[data-info=headline] .alert .hl{display:flex;align-items:center;gap:8px;grid-column:1/-1;font-size:12px;font-weight:500;padding-bottom:10px;margin-bottom:-2px;border-bottom:1px solid color-mix(in srgb,var(--af) 16%,transparent)}
+.alert .hl i{width:22px;height:22px}.alert .hl i svg{width:14px;height:14px}[data-info=headline] .alert>i{display:none}[data-info=headline] .alert>div:not(.hl){grid-column:1/-1}
+.alert .fx{display:none;margin-top:4px;opacity:.9}[data-info=time] .fx,[data-info=headline] .fx{display:block}
+[data-dc=yellow]{--ab:color-mix(in srgb,var(--y) 28%,#fff);--af:var(--n);--ah:var(--n);--ai:var(--y);--ais:var(--n)}
+[data-dc=orange]{--ab:#ffeedb;--af:#4d2a0a;--ah:#b35309;--ai:#f08a24;--ais:#fff}
+[data-dc=tint]{--ab:var(--t2);--af:var(--n);--ah:var(--b);--ai:var(--b);--ais:#fff}
+</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></head><body>
+<div class="jig"><div class="t">Controls<small>not part of the product</small></div>
+<div class="g"><span>Delay position</span><div class="seg" id="seg-delay"><button data-v="above">Above top box</button><button data-v="inside">Inside top box</button><button data-v="below">Below top box</button></div></div>
+<div class="g"><span>Delay color</span><div class="seg" id="seg-color"><button data-v="yellow">Yellow</button><button data-v="orange">Orange</button><button data-v="tint">Petrol tint</button></div></div>
+<div class="g"><span>Type of information</span><div class="seg" id="seg-info"><button data-v="basic">Basic</button><button data-v="time">+ Fix time</button><button data-v="headline">+ Headline</button></div></div>
+<button class="reset" id="reset">Reset</button></div>
+<div class="row"><div class="col"><div class="phone"><div class="screen" style="font-family:'Space Grotesk',sans-serif;--b:#007c8c;--y:#ffd166;--n:#022b33;--bg:#f2f8f9;--t1:#e8f3f5;--t2:#d1e7ea;--mu:#748a8f;--dt:#80bec6;--sh:#004a5433">
+<div class="notch"></div><div class="status"><span>09:05</span><span>●●● 5G ▮</span></div>
+<div class="top"><div class="hi">Good morning, Lena</div><h2>Where to <mark>today?</mark></h2>
+<svg class="sky" width="190" height="96" viewBox="0 0 190 96"><g fill="#fff" opacity=".16"><rect x="0" y="52" width="26" height="44"/><rect x="30" y="34" width="30" height="62"/><rect x="64" y="58" width="24" height="38"/><rect x="118" y="44" width="34" height="52"/><rect x="156" y="62" width="34" height="34"/></g><g fill="#fff" opacity=".3"><rect x="97" y="10" width="4" height="86"/><circle cx="99" cy="10" r="6"/><rect x="92" y="38" width="14" height="6" rx="2"/></g></svg></div>
+<div class="plan"><div class="route"><div class="r"><span class="dot" style="background:#007c8c"></span>Current location</div><div class="r"><span class="dot" style="background:#b9efe3;border:3px solid #022b33"></span><b>Enter destination</b></div></div>
+<div class="two"><div class="field"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><b>Today, 09:05</b></div><div class="field"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><b>Options</b></div></div>
+<div class="btn">Search connections</div></div>
+<div class="alert" id="alert"><div class="hl"><i><svg width="20" height="20" viewBox="0 0 24 24"><path class="tri" d="M12 5 20.5 19.5H3.5Z" stroke-width="3.2" stroke-linejoin="round"/><path class="ex" d="M12 10.2v4.2" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle class="exf" cx="12" cy="17.1" r="1.25"/></svg></i>Announcements for your usual routes</div><i><svg width="20" height="20" viewBox="0 0 24 24"><path class="tri" d="M12 5 20.5 19.5H3.5Z" stroke-width="3.2" stroke-linejoin="round"/><path class="ex" d="M12 10.2v4.2" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle class="exf" cx="12" cy="17.1" r="1.25"/></svg></i><div><b>S1 • 10-15 min delay in both directions</b><br>Signal fault between Hbf and Esslingen<div class="fx">Fix expected in ~35 min (09:40)</div></div></div>
+<h3>Favorites <a>Edit</a></h3><div class="favs"><div class="fav"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="#007c8c"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg></i>Home</div><div class="fav"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007c8c" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></svg></i>Work</div><div class="fav"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="#007c8c"><path d="m12 3 2.7 6 6.3.6-4.8 4.2 1.4 6.2L12 16.9 6.4 20l1.4-6.2L3 9.6 9.3 9z"/></svg></i>Gym</div></div>
+<h3>History <a>Show more</a></h3><div class="hist"><div class="h"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div>Hauptbahnhof → Esslingen<small>S1 · yesterday, 17:42</small></div><em>Search</em></div><div class="h"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div>Marienplatz → Killesberg<small>U7 · Mon, 08:10</small></div><em>Search</em></div></div>
+<div class="tabbar"><div class="on"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>Start</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12h5M12 7v5"/></svg>Departures</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>Tickets</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg>Profile</div></div>
+</div></div></div></div><script>
+const DEF={delay:"below",color:"yellow",info:"basic"};let st={...DEF};try{Object.assign(st,JSON.parse(localStorage.getItem("jig-start")||"{}"))}catch(e){}
+if(!["yellow","orange","tint"].includes(st.color))st.color=DEF.color;if(!["basic","time","headline"].includes(st.info))st.info=DEF.info;
+const scr=document.querySelector(".screen"),plan=scr.querySelector(".plan"),al=document.getElementById("alert"),hdr=scr.querySelector(".top");const CTRL=[["delay","#seg-delay"],["color","#seg-color"],["info","#seg-info"]];
+function layout(){al.style.marginTop="";if(st.delay=== "above"){const h=al.offsetHeight;al.style.marginTop=-(h+18)+"px";const pb=Math.max(90,h+32);hdr.style.paddingBottom=pb+"px";hdr.style.setProperty("--x",(pb-90)+"px")}else{hdr.style.paddingBottom="";hdr.style.removeProperty("--x")}}
+function apply(){scr.classList.toggle("delay-above",st.delay=== "above");scr.classList.toggle("delay-inside",st.delay=== "inside");if(st.delay=== "above")plan.before(al);else if(st.delay=== "inside")plan.append(al);else plan.after(al);scr.dataset.dc=st.color;scr.dataset.info=st.info;for(const[k,sel]of CTRL)document.querySelectorAll(sel+" button").forEach(b=>b.classList.toggle("on",b.dataset.v===st[k]));layout();try{localStorage.setItem("jig-start",JSON.stringify(st))}catch(e){}}
+for(const[k,sel]of CTRL)document.querySelectorAll(sel+" button").forEach(b=>b.onclick=()=>{st[k]=b.dataset.v;apply()});document.getElementById("reset").onclick=()=>{st={...DEF};apply()};apply();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+</script></body></html>
