@@ -68,11 +68,53 @@ h3 a{color:var(--b);text-transform:none;letter-spacing:0;font-weight:600}
 [data-dc=yellow]{--ab:color-mix(in srgb,var(--y) 28%,#fff);--af:var(--n);--ah:var(--n);--ai:var(--y);--ais:var(--n)}
 [data-dc=orange]{--ab:#ffeedb;--af:#4d2a0a;--ah:#b35309;--ai:#f08a24;--ais:#fff}
 [data-dc=tint]{--ab:var(--t2);--af:var(--n);--ah:var(--b);--ai:var(--b);--ais:#fff}
+.jig .g>span small{display:block;color:#a9aeb5;font-weight:400;font-size:12px;margin-top:2px}.jig.calm .g:not(.gc){opacity:.35;pointer-events:none}
+.jig .g.gc{flex-direction:row;align-items:center;justify-content:flex-start;gap:12px}.jig .g.gc>span{text-align:left}.sw{flex:none;width:36px;height:20px;padding:0;border:0;border-radius:999px;background:#6b7078;position:relative;cursor:pointer;transition:background .15s}.sw:after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}.sw[aria-checked=true]{background:#4aa86a}.sw[aria-checked=true]:after{transform:translateX(16px)}
+@media (max-width:600px){.jig .t{border-right:0;padding-right:0}}
+/* ambient backdrop + glass control panel */
+body{font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;color:#e8f3f5;background-color:#021b21;background-image:radial-gradient(60% 55% at 32% 42%,rgba(0,124,140,.55) 0,transparent 70%),radial-gradient(40% 40% at 85% 8%,rgba(185,239,227,.20) 0,transparent 70%),radial-gradient(45% 45% at 8% 95%,rgba(0,124,140,.32) 0,transparent 70%),linear-gradient(160deg,#032a32 0,#021b21 55%,#01120f 100%);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 38% 45%,#000 0,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 38% 45%,#000 0,transparent 75%)}
+.phone{background:#070b0d;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 40px 90px rgba(0,0,0,.55),0 0 140px rgba(0,124,140,.35)}
+.jig{background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:blur(28px) saturate(140%);backdrop-filter:blur(28px) saturate(140%)}
+.jig .t{border-color:rgba(255,255,255,.14);color:#fff;letter-spacing:.02em}
+.jig .t small{color:#8fb3b8}
+.jig .g>span{color:#d6e8ea}
+.seg{border:1px solid rgba(255,255,255,.18);background:rgba(2,27,33,.45);border-radius:12px}
+.seg button{color:#a9c6ca;border-radius:9px;transition:background .15s,color .15s}
+.seg button:hover{color:#fff}
+.seg button.on{background:#b9efe3;color:#022b33}
+.jig .reset{color:#d6e8ea;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 20px;transition:background .15s}
+.jig .reset:hover{background:rgba(255,255,255,.1)}
+.sw{background:rgba(255,255,255,.22)}
+.sw[aria-checked=true]{background:#b9efe3}
+.sw[aria-checked=true]:after{background:#022b33}
+.screen{color:var(--n)}
+/* top bar with dropdowns */
+.jig{top:12px;margin:12px auto 0;width:max-content;max-width:calc(100% - 32px);padding:14px 26px;gap:14px 28px;align-items:center;border-radius:20px}
+.jig .t{padding-right:28px}
+.jig .g{gap:6px}
+.jig .g.gc{max-width:250px}
+@media (max-width:600px){.jig .t{border-right:0;padding-right:0;width:100%}.jig .dd>button{min-width:0;width:100%}.jig .g{width:100%}}
+.dd{position:relative}
+.dd>button{display:flex;align-items:center;gap:8px;font:inherit;font-size:13.5px;color:#fff;text-align:left;min-width:150px;padding:9px 34px 9px 12px;border:1px solid rgba(255,255,255,.18);border-radius:12px;cursor:pointer;background:rgba(2,27,33,.45) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23b9efe3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;transition:border-color .15s}
+.dd>button:hover{border-color:rgba(255,255,255,.4)}
+.dd>button:focus-visible,.dd .menu li:focus-visible{outline:2px solid #b9efe3;outline-offset:2px}
+.dd i{flex:none;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
+.dd .menu{position:absolute;z-index:60;top:calc(100% + 6px);left:0;min-width:100%;list-style:none;padding:4px;border-radius:14px;background:rgba(6,38,45,.94);border:1px solid rgba(255,255,255,.16);box-shadow:0 18px 40px rgba(0,0,0,.45);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.dd .menu[hidden]{display:none}
+.dd .menu li{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;font-size:13.5px;color:#d6e8ea;white-space:nowrap;cursor:pointer}
+.dd .menu li:hover,.dd .menu li:focus{background:rgba(185,239,227,.12);color:#fff;outline:0}
+.dd .menu li[aria-selected=true]{color:#b9efe3;font-weight:600}
+.jig .g>span{text-align:left}
+.alert{container-type:inline-size}
+[data-info=headline] .alert .hl{font-size:calc((100cqw - 30px) / 18.4);white-space:nowrap}
+.jig .g>span{font-weight:400;font-size:13px}
 </style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></head><body>
-<div class="jig"><div class="t">Controls<small>not part of the product</small></div>
-<div class="g"><span>Delay position</span><div class="seg" id="seg-delay"><button data-v="above">Above top box</button><button data-v="inside">Inside top box</button><button data-v="below">Below top box</button></div></div>
-<div class="g"><span>Delay color</span><div class="seg" id="seg-color"><button data-v="yellow">Yellow</button><button data-v="orange">Orange</button><button data-v="tint">Petrol tint</button></div></div>
-<div class="g"><span>Type of information</span><div class="seg" id="seg-info"><button data-v="basic">Basic</button><button data-v="time">+ Fix time</button><button data-v="headline">+ Headline</button></div></div>
+<div class="jig"><div class="t">Controls<small>– not part of the product –</small></div>
+<div class="g"><span>Delay position</span><select id="seg-delay" aria-label="Delay position"><option value="above">Above top box</option><option value="inside">Inside top box</option><option value="below">Below top box</option></select></div>
+<div class="g"><span>Delay color</span><select id="seg-color" aria-label="Delay color"><option value="yellow">Yellow</option><option value="orange">Orange</option><option value="tint">Petrol</option></select></div>
+<div class="g"><span>Type of information</span><select id="seg-info" aria-label="Type of information"><option value="basic">Basic</option><option value="time">+ Fix time</option><option value="headline">+ Fix time &amp; headline</option></select></div>
+<div class="g gc"><button class="sw" id="sw-calm" role="switch" aria-checked="false" aria-label="Calm day"></button><span>Calm day<small>How the screen looks on days without delays</small></span></div>
 <button class="reset" id="reset">Reset</button></div>
 <div class="row"><div class="col"><div class="phone"><div class="screen" style="font-family:'Space Grotesk',sans-serif;--b:#007c8c;--y:#ffd166;--n:#022b33;--bg:#f2f8f9;--t1:#e8f3f5;--t2:#d1e7ea;--mu:#748a8f;--dt:#80bec6;--sh:#004a5433">
 <div class="notch"></div><div class="status"><span>09:05</span><span>●●● 5G ▮</span></div>
@@ -86,10 +128,18 @@ h3 a{color:var(--b);text-transform:none;letter-spacing:0;font-weight:600}
 <h3>History <a>Show more</a></h3><div class="hist"><div class="h"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div>Hauptbahnhof → Esslingen<small>S1 · yesterday, 17:42</small></div><em>Search</em></div><div class="h"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#748a8f" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div>Marienplatz → Killesberg<small>U7 · Mon, 08:10</small></div><em>Search</em></div></div>
 <div class="tabbar"><div class="on"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>Start</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12h5M12 7v5"/></svg>Departures</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>Tickets</div><div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg>Profile</div></div>
 </div></div></div></div><script>
-const DEF={delay:"below",color:"yellow",info:"basic"};let st={...DEF};try{Object.assign(st,JSON.parse(localStorage.getItem("jig-start")||"{}"))}catch(e){}
+const DEF={calm:"off",delay:"below",color:"yellow",info:"basic"};let st={...DEF};try{Object.assign(st,JSON.parse(localStorage.getItem("jig-start")||"{}"))}catch(e){}
 if(!["yellow","orange","tint"].includes(st.color))st.color=DEF.color;if(!["basic","time","headline"].includes(st.info))st.info=DEF.info;
-const scr=document.querySelector(".screen"),plan=scr.querySelector(".plan"),al=document.getElementById("alert"),hdr=scr.querySelector(".top");const CTRL=[["delay","#seg-delay"],["color","#seg-color"],["info","#seg-info"]];
-function layout(){al.style.marginTop="";if(st.delay=== "above"){const h=al.offsetHeight;al.style.marginTop=-(h+18)+"px";const pb=Math.max(90,h+32);hdr.style.paddingBottom=pb+"px";hdr.style.setProperty("--x",(pb-90)+"px")}else{hdr.style.paddingBottom="";hdr.style.removeProperty("--x")}}
-function apply(){scr.classList.toggle("delay-above",st.delay=== "above");scr.classList.toggle("delay-inside",st.delay=== "inside");if(st.delay=== "above")plan.before(al);else if(st.delay=== "inside")plan.append(al);else plan.after(al);scr.dataset.dc=st.color;scr.dataset.info=st.info;for(const[k,sel]of CTRL)document.querySelectorAll(sel+" button").forEach(b=>b.classList.toggle("on",b.dataset.v===st[k]));layout();try{localStorage.setItem("jig-start",JSON.stringify(st))}catch(e){}}
-for(const[k,sel]of CTRL)document.querySelectorAll(sel+" button").forEach(b=>b.onclick=()=>{st[k]=b.dataset.v;apply()});document.getElementById("reset").onclick=()=>{st={...DEF};apply()};apply();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+const scr=document.querySelector(".screen"),plan=scr.querySelector(".plan"),al=document.getElementById("alert"),hdr=scr.querySelector(".top");document.getElementById("sw-calm").onclick=()=>{st.calm=st.calm==="on"?"off":"on";apply()};const CTRL=[["delay","#seg-delay"],["color","#seg-color"],["info","#seg-info"]];
+function layout(){al.style.marginTop="";if(st.delay==="above"&&st.calm!=="on"){const h=al.offsetHeight;al.style.marginTop=-(h+18)+"px";const pb=Math.max(90,h+32);hdr.style.paddingBottom=pb+"px";hdr.style.setProperty("--x",(pb-90)+"px")}else{hdr.style.paddingBottom="";hdr.style.removeProperty("--x")}}
+function apply(){const calm=st.calm==="on",d=calm?"below":st.delay;document.getElementById("sw-calm").setAttribute("aria-checked",calm);scr.classList.toggle("delay-above",d==="above");scr.classList.toggle("delay-inside",d==="inside");if(d==="above")plan.before(al);else if(d==="inside")plan.append(al);else plan.after(al);al.style.display=calm?"none":"";document.querySelector(".jig").classList.toggle("calm",calm);scr.dataset.dc=st.color;scr.dataset.info=calm?"basic":st.info;for(const[k,sel]of CTRL)document.querySelector(sel).value=st[k];ddSync();layout();try{localStorage.setItem("jig-start",JSON.stringify(st))}catch(e){}}
+const DOT={yellow:"#ffd166",orange:"#f08a24",tint:"#007c8c"};
+document.querySelectorAll(".jig select").forEach(sl=>{const dd=document.createElement("div");dd.className="dd";const bt=document.createElement("button");bt.type="button";bt.setAttribute("aria-haspopup","listbox");bt.setAttribute("aria-expanded","false");bt.setAttribute("aria-label",sl.getAttribute("aria-label"));const ul=document.createElement("ul");ul.className="menu";ul.setAttribute("role","listbox");ul.hidden=true;const dot=o=>sl.id==="seg-color"?`<i style="background:${DOT[o.value]}"></i>`:"";[...sl.options].forEach(o=>{const li=document.createElement("li");li.setAttribute("role","option");li.tabIndex=-1;li.dataset.v=o.value;li.innerHTML=dot(o)+o.textContent;ul.append(li)});sl.hidden=true;sl.after(dd);dd.append(bt,ul);
+const close=f=>{ul.hidden=true;bt.setAttribute("aria-expanded","false");if(f)bt.focus()};const pick=li=>{sl.value=li.dataset.v;sl.dispatchEvent(new Event("change"));close(true)};
+bt.onclick=()=>{if(ul.hidden){document.querySelectorAll(".jig .menu").forEach(m=>m.hidden=true);ul.hidden=false;bt.setAttribute("aria-expanded","true");(ul.querySelector("[aria-selected=true]")||ul.firstChild).focus()}else close()};
+ul.onclick=e=>{const li=e.target.closest("li");if(li)pick(li)};
+ul.onkeydown=e=>{const li=e.target.closest("li");if(!li)return;const k=e.key;if(k==="Escape")close(true);else if(k==="Enter"||k===" "){e.preventDefault();pick(li)}else if(k==="ArrowDown"){e.preventDefault();(li.nextElementSibling||li).focus()}else if(k==="ArrowUp"){e.preventDefault();(li.previousElementSibling||li).focus()}else if(k==="Tab")close()};
+dd.addEventListener("focusout",e=>{if(!dd.contains(e.relatedTarget))close()})});
+function ddSync(){document.querySelectorAll(".jig select").forEach(sl=>{const dd=sl.nextElementSibling,o=sl.selectedOptions[0];dd.querySelector("button").innerHTML=(sl.id==="seg-color"?`<i style="background:${DOT[o.value]}"></i>`:"")+o.textContent;dd.querySelectorAll("li").forEach(li=>li.setAttribute("aria-selected",li.dataset.v===sl.value))})}
+for(const[k,sel]of CTRL)document.querySelector(sel).onchange=e=>{st[k]=e.target.value;apply()};document.getElementById("reset").onclick=()=>{st={...DEF};apply()};apply();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
 </script></body></html>
